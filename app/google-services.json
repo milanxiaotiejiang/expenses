@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "245053569092",
+    "firebase_url": "https://soundpeats-4c346.firebaseio.com",
+    "project_id": "soundpeats-4c346",
+    "storage_bucket": "soundpeats-4c346.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245053569092:android:5794299a8f275307372411",
+        "android_client_info": {
+          "package_name": "com.nominalista.expenses"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245053569092-p7ujnpcuaal5niojai4bd7inogcp692q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl_anyLsWQZUfflDDyLp0GwpqMH5xEfiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245053569092-p7ujnpcuaal5niojai4bd7inogcp692q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

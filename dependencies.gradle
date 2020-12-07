@@ -1,7 +1,7 @@
 ext {
 
     // Kotlin
-    kotlinVersion = '1.3.50'
+    kotlinVersion = '1.4.10'
 
     // AndroidX
     appCompatVersion = '1.0.2'
@@ -41,44 +41,44 @@ ext {
     testRulesVersion = '1.2.0'
 
     appDependencies = [
-            "appCompat"               : "androidx.appcompat:appcompat:${appCompatVersion}",
-            "constraintLayout"        : "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
-            "coreKtx"                 : "androidx.core:core-ktx:${coreKtxVersion}",
-            "coroutinesAndroid"       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}",
-            "coroutinesCore"          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}",
-            "firebaseAuth"            : "com.google.firebase:firebase-auth:${firebaseAuthVersion}",
-            "firebaseConfig"          : "com.google.firebase:firebase-config:${firebaseConfigVersion}",
-            "firebaseCore"            : "com.google.firebase:firebase-core:${firebaseCoreVersion}",
-            "firebaseFirestore"       : "com.google.firebase:firebase-firestore:${firebaseFirestoreVersion}",
-            "firebaseMessaging"       : "com.google.firebase:firebase-messaging:${firebaseMessagingVersion}",
-            "googlePlayBilling"       : "com.android.billingclient:billing:${googlePlayBillingVersion}",
-            "googlePlayBillingExt"    : "com.android.billingclient:billing-ktx:${googlePlayBillingVersion}",
-            "googlePlayServicesAuth"  : "com.google.android.gms:play-services-auth:${googlePlayServicesVersion}",
-            "jxl"                     : "net.sourceforge.jexcelapi:jxl:${jxlVersion}",
-            "kotlin"                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
-            "material"                : "com.google.android.material:material:${materialVersion}",
-            "lifecycleExtensions"     : "androidx.lifecycle:lifecycle-extensions:${lifecycleVersion}",
-            "lifecycleReactiveStreams": "androidx.lifecycle:lifecycle-reactivestreams:${lifecycleVersion}",
-            "navigationFragment"      : "androidx.navigation:navigation-fragment-ktx:${navigationVersion}",
-            "navigationUi"            : "androidx.navigation:navigation-ui-ktx:${navigationVersion}",
-            "preference"              : "androidx.preference:preference:${preferenceVersion}",
-            "recyclerView"            : "androidx.recyclerview:recyclerview:${recyclerViewVersion}",
-            "roomCompiler"            : "androidx.room:room-compiler:${roomVersion}",
-            "roomRuntime"             : "androidx.room:room-runtime:${roomVersion}",
-            "roomRxJava"              : "androidx.room:room-rxjava2:${roomVersion}",
-            "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-            "rxKotlin"                : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
-            "rxRelay"                 : "com.jakewharton.rxrelay2:rxrelay:${rxRelayVersion}",
-            "threeTen"                : "com.jakewharton.threetenabp:threetenabp:${threeTeenVersion}",
-            "workRuntime"             : "androidx.work:work-runtime-ktx:${workVersion}",
-            "workRxJava"              : "androidx.work:work-rxjava2:${workVersion}"
+            "appCompat"               : "androidx.appcompat:appcompat:1.0.2",
+            "constraintLayout"        : "androidx.constraintlayout:constraintlayout:1.1.3",
+            "coreKtx"                 : "androidx.core:core-ktx:1.1.0-rc03",
+            "coroutinesAndroid"       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0",
+            "coroutinesCore"          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0",
+            "firebaseAuth"            : "com.google.firebase:firebase-auth:19.2.0",
+            "firebaseConfig"          : "com.google.firebase:firebase-config:19.1.0",
+            "firebaseCore"            : "com.google.firebase:firebase-core:17.2.1",
+            "firebaseFirestore"       : "com.google.firebase:firebase-firestore:21.3.1",
+            "firebaseMessaging"       : "com.google.firebase:firebase-messaging:20.1.0",
+            "googlePlayBilling"       : "com.android.billingclient:billing:2.1.0",
+            "googlePlayBillingExt"    : "com.android.billingclient:billing-ktx:2.1.0",
+            "googlePlayServicesAuth"  : "com.google.android.gms:play-services-auth:17.0.0",
+            "jxl"                     : "net.sourceforge.jexcelapi:jxl:2.6.12",
+            "kotlin"                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10",
+            "material"                : "com.google.android.material:material:1.1.0-rc02",
+            "lifecycleExtensions"     : "androidx.lifecycle:lifecycle-extensions:2.0.0",
+            "lifecycleReactiveStreams": "androidx.lifecycle:lifecycle-reactivestreams:2.0.0",
+            "navigationFragment"      : "androidx.navigation:navigation-fragment-ktx:2.0.0",
+            "navigationUi"            : "androidx.navigation:navigation-ui-ktx:2.0.0",
+            "preference"              : "androidx.preference:preference:1.0.0",
+            "recyclerView"            : "androidx.recyclerview:recyclerview:1.0.0",
+            "roomCompiler"            : "androidx.room:room-compiler:2.1.0",
+            "roomRuntime"             : "androidx.room:room-runtime:2.1.0",
+            "roomRxJava"              : "androidx.room:room-rxjava2:2.1.0",
+            "rxAndroid"               : "io.reactivex.rxjava2:rxandroid:2.1.1",
+            "rxKotlin"                : "io.reactivex.rxjava2:rxkotlin:2.4.0",
+            "rxRelay"                 : "com.jakewharton.rxrelay2:rxrelay:2.1.1",
+            "threeTen"                : "com.jakewharton.threetenabp:threetenabp:1.2.1",
+            "workRuntime"             : "androidx.work:work-runtime-ktx:2.2.0",
+            "workRxJava"              : "androidx.work:work-rxjava2:2.2.0"
     ]
 
     appTestDependencies = [
-            "jUnit"                   : "junit:junit:${jUnitVersion}",
-            "core"                    : "androidx.test:core:${testCoreVersion}",
-            "runner"                  : "androidx.test:runner:${testRunnerVersion}",
-            "rules"                   : "androidx.test:rules:${testRulesVersion}",
-            "roomTesting"             : "androidx.room:room-testing:${roomVersion}"
+            "jUnit"                   : "junit:junit:4.12",
+            "core"                    : "androidx.test:core:1.2.0",
+            "runner"                  : "androidx.test:runner:1.2.0",
+            "rules"                   : "androidx.test:rules:1.2.0",
+            "roomTesting"             : "androidx.room:room-testing:2.1.0"
     ]
 }
