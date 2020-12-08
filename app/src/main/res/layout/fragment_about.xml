@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_xlarge"
-            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_xlarge"
             android:layout_marginEnd="@dimen/spacing_xlarge"
             android:gravity="center"
             android:text="@string/app_description"
@@ -33,7 +33,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/contactButton"
             style="@style/Widget.Expenses.TextButton.Normal"
-            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_margin="@dimen/spacing_normal"
             android:text="@string/contact_me"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
