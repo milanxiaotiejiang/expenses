@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.work.WorkInfo
 import com.nominalista.expenses.Application
 import com.nominalista.expenses.R
-import com.nominalista.expenses.authentication.AuthenticationManager
 import com.nominalista.expenses.configuration.Configuration
-import com.nominalista.expenses.configuration.FirebaseConfiguration
 import com.nominalista.expenses.settings.work.ExpenseExportWorker
 import com.nominalista.expenses.settings.work.ExpenseImportWorker
 import com.nominalista.expenses.util.reactive.DataEvent
@@ -18,20 +16,10 @@ import com.nominalista.expenses.util.reactive.Variable
 import java.util.*
 
 class HomeActivityModel(
-    application: Application,
-    private val authenticationManager: AuthenticationManager,
-    private val configuration: Configuration
+        application: Application,
+        private val configuration: Configuration
 ) : AndroidViewModel(application) {
 
-    val isUserSignedIn: Variable<Boolean> by lazy {
-        Variable(defaultValue = authenticationManager.isUserSignedIn())
-    }
-    val userName: Variable<String> by lazy {
-        Variable(defaultValue = authenticationManager.getCurrentUserName() ?: "")
-    }
-    val userEmail: Variable<String> by lazy {
-        Variable(defaultValue = authenticationManager.getCurrentUserEmail() ?: "")
-    }
     val isBannerEnabled: Variable<Boolean> by lazy {
         Variable(defaultValue = configuration.getBoolean(Configuration.KEY_BANNER_ENABLED))
     }
@@ -42,7 +30,6 @@ class HomeActivityModel(
         Variable(defaultValue = configuration.getString(Configuration.KEY_BANNER_SUBTITLE))
     }
 
-    val navigateToOnboarding = Event()
     val selectFileForImport = Event()
     val showExpenseImportFailureDialog = Event()
     val requestExportPermissions = Event()
@@ -57,9 +44,6 @@ class HomeActivityModel(
     private var expenseImportId: UUID? = null
     private var expenseExportId: UUID? = null
 
-    fun navigateToOnboardingRequested() {
-        navigateToOnboarding.next()
-    }
 
     fun importExpensesRequested() {
         selectFileForImport.next()
@@ -142,15 +126,14 @@ class HomeActivityModel(
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return HomeActivityModel(
-                application,
-                application.authenticationManager,
-                application.configuration
+                    application,
+                    application.configuration
             ) as T
         }
     }
 
     companion object {
         private val TEMPLATE_XLS_URI =
-            Uri.parse("https://raw.githubusercontent.com/nominalista/expenses/master/resources/template.xls")
+                Uri.parse("https://raw.githubusercontent.com/nominalista/expenses/master/resources/template.xls")
     }
 }

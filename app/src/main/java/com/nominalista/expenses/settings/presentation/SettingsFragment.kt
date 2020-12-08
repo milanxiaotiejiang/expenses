@@ -1,6 +1,5 @@
 package com.nominalista.expenses.settings.presentation
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -18,9 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.nominalista.expenses.R
 import com.nominalista.expenses.common.presentation.Theme
-import com.nominalista.expenses.currencyselection.CurrencySelectionActivity
-import com.nominalista.expenses.data.model.Currency
-import com.nominalista.expenses.onboarding.OnboardingActivity
 import com.nominalista.expenses.util.extensions.application
 import com.nominalista.expenses.util.extensions.plusAssign
 import com.nominalista.expenses.util.extensions.startActivitySafely
@@ -38,8 +34,8 @@ class SettingsFragment : Fragment() {
     // Lifecycle start
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
@@ -80,17 +76,12 @@ class SettingsFragment : Fragment() {
 
     private fun bindModel() {
         compositeDisposable += model.itemModels.subscribe(adapter::submitList)
-        compositeDisposable += model.selectDefaultCurrency.subscribe(::selectDefaultCurrency)
-        compositeDisposable += model.navigateToOnboarding.subscribe(::navigateToOnboarding)
         compositeDisposable += model.showMessage.subscribe(::showMessage)
         compositeDisposable += model.showActivity.subscribe(::showActivity)
         compositeDisposable += model.showThemeSelectionDialog.subscribe(::showThemeSelectionDialog)
         compositeDisposable += model.applyTheme.subscribe(::applyTheme)
     }
 
-    private fun selectDefaultCurrency() {
-        CurrencySelectionActivity.start(this, REQUEST_CODE_SELECT_DEFAULT_CURRENCY)
-    }
 
     private fun showMessage(messageId: Int) {
         Snackbar.make(containerLayout, messageId, Snackbar.LENGTH_LONG).show()
@@ -112,11 +103,6 @@ class SettingsFragment : Fragment() {
         Handler().postDelayed({
             AppCompatDelegate.setDefaultNightMode(theme.toNightMode())
         }, NIGHT_MODE_APPLICATION_DELAY)
-    }
-
-    private fun navigateToOnboarding() {
-        OnboardingActivity.start(requireContext())
-        requireActivity().finishAffinity()
     }
 
     // Lifecycle end
@@ -144,25 +130,7 @@ class SettingsFragment : Fragment() {
         return true
     }
 
-    // Results
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode != Activity.RESULT_OK) return
-
-        when (requestCode) {
-            REQUEST_CODE_SELECT_DEFAULT_CURRENCY -> {
-                val currency: Currency? =
-                    data?.getParcelableExtra(CurrencySelectionActivity.EXTRA_CURRENCY)
-                currency?.let { model.defaultCurrencySelected(it) }
-            }
-        }
-    }
-
     companion object {
-
-        private const val REQUEST_CODE_SELECT_DEFAULT_CURRENCY = 1
         private const val NIGHT_MODE_APPLICATION_DELAY = 500L
     }
 }

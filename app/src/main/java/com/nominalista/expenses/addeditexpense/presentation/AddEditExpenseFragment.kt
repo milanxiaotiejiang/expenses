@@ -12,7 +12,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.chip.Chip
 import com.nominalista.expenses.R
 import com.nominalista.expenses.addeditexpense.presentation.dateselection.DateSelectionDialogFragment
-import com.nominalista.expenses.currencyselection.CurrencySelectionActivity
 import com.nominalista.expenses.data.model.Currency
 import com.nominalista.expenses.data.model.Tag
 import com.nominalista.expenses.util.READABLE_DATE_FORMAT
@@ -31,8 +30,8 @@ class AddEditExpenseFragment : Fragment() {
     // Lifecycle start
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_add_edit_expense, container, false)
     }
@@ -45,6 +44,9 @@ class AddEditExpenseFragment : Fragment() {
         initializeModels()
         bindModels()
         showKeyboard()
+
+        val currency = Currency.CNY
+        model.selectCurrency(currency)
     }
 
     private fun setupActionBar() {
@@ -64,13 +66,8 @@ class AddEditExpenseFragment : Fragment() {
     }
 
     private fun addListeners() {
-        textSymbol.setOnClickListener { showCurrencySelection() }
         containerTags.setOnClickListener { showTagSelection() }
         textDate.setOnClickListener { showDateSelection() }
-    }
-
-    private fun showCurrencySelection() {
-        CurrencySelectionActivity.start(this, REQUEST_CODE_SELECT_CURRENCY)
     }
 
     private fun showTagSelection() {
@@ -85,11 +82,11 @@ class AddEditExpenseFragment : Fragment() {
 
     private fun initializeModels() {
         activityModel = ViewModelProviders.of(requireActivity())
-            .get(AddEditExpenseActivityModel::class.java)
+                .get(AddEditExpenseActivityModel::class.java)
 
         val args = arguments?.let { AddEditExpenseFragmentArgs.fromBundle(it) }
         val factory =
-            AddEditExpenseFragmentModel.Factory(requireContext().application, args?.expense)
+                AddEditExpenseFragmentModel.Factory(requireContext().application, args?.expense)
         model = ViewModelProviders.of(this, factory).get(AddEditExpenseFragmentModel::class.java)
     }
 
@@ -97,8 +94,8 @@ class AddEditExpenseFragment : Fragment() {
         activityModel.selectedTags.observe(this, Observer { model.selectTags(it) })
 
         disposables += model.selectedCurrency
-            .toObservable()
-            .subscribe { updateCurrencyText(it) }
+                .toObservable()
+                .subscribe { updateCurrencyText(it) }
         disposables += model.selectedDate.toObservable().subscribe { updateDateText(it) }
         disposables += model.selectedTags.toObservable().subscribe { updateTagLayout(it) }
         disposables += model.finish.toObservable().subscribe { finish() }
@@ -119,9 +116,9 @@ class AddEditExpenseFragment : Fragment() {
     private fun updateCurrencyText(currency: Currency) {
         val context = requireContext()
         val text = context.getString(
-            R.string.currency_abbreviation,
-            currency.flag,
-            currency.code
+                R.string.currency_abbreviation,
+                currency.flag,
+                currency.code
         )
         textSymbol.text = text
     }
@@ -196,26 +193,7 @@ class AddEditExpenseFragment : Fragment() {
         return true
     }
 
-    // Results
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode != Activity.RESULT_OK) return
-
-        when(requestCode) {
-            REQUEST_CODE_SELECT_CURRENCY -> {
-                val currency: Currency? =
-                    data?.getParcelableExtra(CurrencySelectionActivity.EXTRA_CURRENCY)
-                currency?.let { model.selectCurrency(it) }
-            }
-        }
-    }
-
     companion object {
-
-        private const val REQUEST_CODE_SELECT_CURRENCY = 1
-
         private const val KEYBOARD_APPEARANCE_DELAY = 300L
     }
 }

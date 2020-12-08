@@ -39,7 +39,7 @@ enum class Currency(
     CDF("Congolese Franc", "FC", "\uD83C\uDDE8\uD83C\uDDE9"),
     CHF("Switzerland Franc", "CHF", "\uD83C\uDDE8\uD83C\uDDED"),
     CLP("Chile Peso", "$", "\uD83C\uDDE8\uD83C\uDDF1"),
-    CNY("China Yuan", "¥", "\uD83C\uDDE8\uD83C\uDDF3"),
+    CNY("人名币", "元", "\uD83C\uDDE8\uD83C\uDDF3"),
     COP("Colombia Peso", "$", "\uD83C\uDDE8\uD83C\uDDF4"),
     CRC("Costa Rica Colon", "₡", "\uD83C\uDDE8\uD83C\uDDF7"),
     CUP("Cuban Peso", "$", "\uD83C\uDDE8\uD83C\uDDFA"),

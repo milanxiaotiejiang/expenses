@@ -43,9 +43,6 @@
         <activity android:name=".about.AboutActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".currencyselection.CurrencySelectionActivity"
-            android:screenOrientation="portrait"/>
-
         <service
             android:name=".messaging.MessagingService"
             android:exported="false">

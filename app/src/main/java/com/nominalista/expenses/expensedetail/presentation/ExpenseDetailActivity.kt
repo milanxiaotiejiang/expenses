@@ -33,9 +33,9 @@ class ExpenseDetailActivity: BaseActivity() {
         return graph
     }
 
-    private fun makeStartDestinationBundle(): Bundle {
+    private fun makeStartDestinationBundle(): Bundle? {
         val expense = intent.getParcelableExtra<Expense>(EXTRA_EXPENSE)
-        return ExpenseDetailFragmentArgs.Builder(expense).build().toBundle()
+        return expense?.let { ExpenseDetailFragmentArgs.Builder(it).build().toBundle() }
     }
 
     companion object {

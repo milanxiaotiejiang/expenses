@@ -28,7 +28,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:background="?selectableItemBackgroundBorderless"
-                android:drawableEnd="@drawable/ic_arrow_drop_down_24dp"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceHeadline5"
                 android:textColor="?colorOnPrimary"
