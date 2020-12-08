@@ -17,11 +17,11 @@ class SummaryItemHolder(itemView: View) : HomeItemHolder(itemView) {
             LinearLayoutManager.HORIZONTAL,
             false)
     private val indicatorDecoration =
-        CirclePagerIndicatorDecoration(
-            itemView.context,
-            R.color.icon_active_light,
-            R.color.icon_inactive_light
-        )
+            CirclePagerIndicatorDecoration(
+                    itemView.context,
+                    R.color.icon_active_light,
+                    R.color.icon_inactive_light
+            )
     private val snapHelper = PagerSnapHelper()
 
     init {
@@ -46,16 +46,26 @@ class SummaryItemHolder(itemView: View) : HomeItemHolder(itemView) {
     private fun showPopupMenu(model: SummaryItemModel) {
         val popupMenu = PopupMenu(itemView.context, itemView.chip_date_range)
         popupMenu.inflate(R.menu.menu_date_range)
-        popupMenu.setOnMenuItemClickListener { menuItemSelected(it, model) }
+        popupMenu.setOnMenuItemClickListener {
+            menuItemSelected(it, model)
+        }
         popupMenu.show()
     }
 
     private fun menuItemSelected(item: MenuItem, model: SummaryItemModel): Boolean {
         return when (item.itemId) {
-            R.id.today -> { model.onTodayClick(); true }
-            R.id.this_week -> { model.onThisWeekClick(); true }
-            R.id.this_month -> { model.onThisMonthClick(); true }
-            R.id.all_time -> { model.onAllTimeClick(); true }
+            R.id.today -> {
+                model.onTodayClick(); true
+            }
+            R.id.this_week -> {
+                model.onThisWeekClick(); true
+            }
+            R.id.this_month -> {
+                model.onThisMonthClick(); true
+            }
+            R.id.all_time -> {
+                model.onAllTimeClick(); true
+            }
             else -> false
         }
     }

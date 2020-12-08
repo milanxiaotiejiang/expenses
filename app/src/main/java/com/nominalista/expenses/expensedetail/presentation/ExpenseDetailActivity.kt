@@ -3,6 +3,7 @@ package com.nominalista.expenses.expensedetail.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
@@ -40,13 +41,14 @@ class ExpenseDetailActivity : BaseActivity() {
 
     companion object {
 
+        const val EXPENSE_DETAIL_REQUEST_CODE = 521
         private const val EXTRA_EXPENSE = "expense"
 
-        fun start(context: Context, expense: Expense) {
+        fun start(context: Context, fragment: Fragment, expense: Expense) {
             val intent = Intent(context, ExpenseDetailActivity::class.java).apply {
                 putExtra(EXTRA_EXPENSE, expense)
             }
-            context.startActivity(intent)
+            fragment.startActivityForResult(intent, EXPENSE_DETAIL_REQUEST_CODE)
         }
     }
 }

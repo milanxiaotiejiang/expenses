@@ -1,5 +1,6 @@
 package com.nominalista.expenses.home.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
@@ -100,7 +101,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showExpenseDetail(expense: Expense) {
-        ExpenseDetailActivity.start(requireContext(), expense)
+        ExpenseDetailActivity.start(requireContext(), this, expense)
     }
 
     private fun showTagFiltering() {
@@ -131,6 +132,10 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         unbindFromModel()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun unbindFromModel() {

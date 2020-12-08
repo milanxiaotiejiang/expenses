@@ -1,5 +1,8 @@
 package com.nominalista.expenses.about
 
+import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -7,9 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.nominalista.expenses.R
 import com.nominalista.expenses.util.extensions.getSupportActionBarOrNull
 import com.nominalista.expenses.util.extensions.requireApplication
+import com.permissionx.guolindev.PermissionX
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_about.*
 
@@ -40,6 +45,9 @@ class AboutFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupActionBar()
         setupListeners()
+
+        Glide.with(this).load(R.mipmap.image_large_2).into(appLogoImageView)
+
     }
 
     private fun setupActionBar() {
@@ -52,7 +60,16 @@ class AboutFragment : Fragment() {
 
     private fun setupListeners() {
         contactButton.setOnClickListener {
-            // TODO: 2020/12/8 打电话给我
+            PermissionX.init(this)
+                    .permissions(Manifest.permission.CALL_PHONE)
+                    .request { allGranted, _, _ ->
+                        if (allGranted) {
+                            val intent = Intent(Intent.ACTION_CALL)
+                            val data = Uri.parse("tel:$CALL_PHONE")
+                            intent.data = data
+                            startActivity(intent)
+                        }
+                    }
         }
     }
 
@@ -75,5 +92,6 @@ class AboutFragment : Fragment() {
 
     companion object {
         private const val TAG = "AboutFragment"
+        private const val CALL_PHONE = "18734772024"
     }
 }

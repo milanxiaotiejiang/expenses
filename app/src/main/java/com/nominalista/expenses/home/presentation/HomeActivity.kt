@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.work.WorkManager
+import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.nominalista.expenses.R
@@ -41,6 +42,8 @@ class HomeActivity : BaseActivity() {
         setupToolbar()
         setupItemLayouts()
         bindModel()
+
+        Glide.with(this).load(R.mipmap.image_large_1).into(ivHead)
     }
 
     private fun setupModel() {
@@ -76,24 +79,24 @@ class HomeActivity : BaseActivity() {
     private fun bindModel() {
 
         compositeDisposable += model.selectFileForImport
-            .subscribe { selectFileForImport() }
+                .subscribe { selectFileForImport() }
         compositeDisposable += model.showExpenseImportFailureDialog
-            .subscribe { showExpenseImportFailureDialog() }
+                .subscribe { showExpenseImportFailureDialog() }
         compositeDisposable += model.requestExportPermissions
-            .subscribe { requestExportPermissions() }
+                .subscribe { requestExportPermissions() }
         compositeDisposable += model.showExpenseExportFailureDialog
-            .subscribe { showExpenseExportFailureDialog() }
+                .subscribe { showExpenseExportFailureDialog() }
         compositeDisposable += model.navigateToSettings
-            .subscribe { navigateToSettings() }
+                .subscribe { navigateToSettings() }
         compositeDisposable += model.navigateToSupport
-            .subscribe { navigateToSupport() }
+                .subscribe { navigateToSupport() }
 
         compositeDisposable += model.showMessage
-            .subscribe { showMessage(it) }
+                .subscribe { showMessage(it) }
         compositeDisposable += model.showActivity
-            .subscribe { showActivity(it) }
+                .subscribe { showActivity(it) }
         compositeDisposable += model.observeWorkInfo
-            .subscribe { observeWorkInfo(it) }
+                .subscribe { observeWorkInfo(it) }
     }
 
     private fun selectFileForImport() {
@@ -106,11 +109,11 @@ class HomeActivity : BaseActivity() {
 
     private fun showExpenseImportFailureDialog() {
         MaterialAlertDialogBuilder(this)
-            .setMessage(R.string.expense_import_failure_message)
-            .setPositiveButton(R.string.ok) { _, _ -> }
-            .setNeutralButton(R.string.download_template) { _, _ -> model.downloadTemplate() }
-            .create()
-            .show()
+                .setMessage(R.string.expense_import_failure_message)
+                .setPositiveButton(R.string.ok) { _, _ -> }
+                .setNeutralButton(R.string.download_template) { _, _ -> model.downloadTemplate() }
+                .create()
+                .show()
     }
 
     private fun requestExportPermissions() {
@@ -119,8 +122,8 @@ class HomeActivity : BaseActivity() {
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(
-                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                    REQUEST_CODE_WRITE_EXTERNAL_STORAGE_FOR_EXPORT
+                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                        REQUEST_CODE_WRITE_EXTERNAL_STORAGE_FOR_EXPORT
                 )
             }
         }
@@ -128,10 +131,10 @@ class HomeActivity : BaseActivity() {
 
     private fun showExpenseExportFailureDialog() {
         MaterialAlertDialogBuilder(this)
-            .setMessage(R.string.expense_export_failure_message)
-            .setPositiveButton(R.string.ok) { _, _ -> }
-            .create()
-            .show()
+                .setMessage(R.string.expense_export_failure_message)
+                .setPositiveButton(R.string.ok) { _, _ -> }
+                .create()
+                .show()
     }
 
     private fun navigateToSettings() {
@@ -153,8 +156,8 @@ class HomeActivity : BaseActivity() {
 
     private fun observeWorkInfo(id: UUID) {
         WorkManager.getInstance(this)
-            .getWorkInfoByIdLiveData(id)
-            .observe(this, Observer { model.handleWorkInfo(it) })
+                .getWorkInfoByIdLiveData(id)
+                .observe(this, Observer { model.handleWorkInfo(it) })
     }
 
     override fun onDestroy() {
@@ -179,9 +182,9 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
     ) {
         if (isGranted(grantResults)) model.exportPermissionsGranted()
     }

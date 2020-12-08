@@ -11,21 +11,13 @@
         android:clickable="true"
         android:focusable="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/headerLayout"
+        <ImageView
+            android:id="@+id/ivHead"
             android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:background="?attr/colorPrimary"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
             android:id="@+id/importExpensesItemLayout"
@@ -39,7 +31,7 @@
             android:paddingBottom="@dimen/spacing_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerLayout">
+            app:layout_constraintTop_toBottomOf="@id/ivHead">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"

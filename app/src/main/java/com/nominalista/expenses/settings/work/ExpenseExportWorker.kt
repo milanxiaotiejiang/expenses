@@ -25,7 +25,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class ExpenseExportWorker(context: Context, workerParams: WorkerParameters) :
-    CoroutineWorker(context, workerParams) {
+        CoroutineWorker(context, workerParams) {
 
     private val dataStore: DataStore by lazy {
         (applicationContext as Application).defaultDataStore
@@ -51,7 +51,12 @@ class ExpenseExportWorker(context: Context, workerParams: WorkerParameters) :
         val dateString = DateTimeFormatter.ofPattern(TIMESTAMP_PATTERN).format(LocalDateTime.now())
         val fileName = "${appName}_$dateString"
         val extension = ".xls"
-        return File(downloads, fileName + extension)
+        val file = File(downloads, fileName + extension)
+        if (file.exists()) {
+            file.delete()
+        }
+        file.createNewFile()
+        return file
     }
 
     private fun createSheet(workbook: WritableWorkbook): WritableSheet {
