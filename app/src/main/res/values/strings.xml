@@ -3,7 +3,6 @@
     <string name="app_name">微账单</string>
     <string name="app_description">制作给亲爱的宝宝，生日快乐！</string>
     <string name="about">关于</string>
-    <string name="account">帐户</string>
     <string name="add">添加</string>
     <string name="add_tag">添加标记</string>
     <string name="add_expense_button">增加费用账单</string>
@@ -11,8 +10,6 @@
     <string name="all_time">全部</string>
     <string name="application">应用</string>
     <string name="cancel">取消</string>
-    <string name="channel_name_default">默认频道</string>
-    <string name="channel_description_default">所有类型通知的通道。</string>
     <string name="column_amount">数量</string>
     <string name="column_currency">货币</string>
     <string name="column_date">日期</string>
@@ -21,21 +18,12 @@
     <string name="column_title">标题</string>
     <string name="confirm">确认</string>
     <string name="contact_me">联系我</string>
-    <string name="continue_with_google">继续使用谷歌</string>
     <string name="currency_abbreviation" translatable="false">%1$s\u0020\u0020%2$s</string>
     <string name="dark">暗黑</string>
     <string name="delete">删除</string>
-    <string name="default_currency">本币</string>
-    <string name="default_currency_summary" translatable="false">%1$s\u0020\u0020%2$s\u0020(%3$s)</string>
     <string name="delete_all_expenses">删除所有费用</string>
     <string name="delete_all_expenses_message">是否确实要删除所有开支？</string>
     <string name="delete_expense_message">确定要删除费用吗？</string>
-    <string name="donate_app">捐赠应用程序 💕</string>
-    <string name="donate_app_summary">帮我让这个应用永远免费。</string>
-    <string name="donate_description">如果你真的喜欢支出，可以考虑留下一笔丰厚的小费来支持它的开发和维护。</string>
-    <string name="donate_with_price">捐赠 (%s)</string>
-    <string name="donation_thanks_title">谢谢您！</string>
-    <string name="donation_thanks_message">感谢你捐赠开源软件，你太棒了。</string>
     <string name="download_template">下载模板</string>
     <string name="edit">编辑</string>
     <string name="expense_detail_title">细节</string>
@@ -57,19 +45,10 @@
     <string name="no_tags">没有标签</string>
     <string name="notes_title">笔记</string>
     <string name="notes_hint">注释（可选）</string>
-    <string name="privacy">隐私</string>
-    <string name="privacy_policyprivacy_policy">隐私政策</string>
-    <string name="purchase_unavailable">无法购买</string>
-    <string name="rate_app">为应用程序评分</string>
-    <string name="rate_app_summary">如果您喜欢该应用程序，请与其他人共享。</string>
     <string name="save">保存</string>
-    <string name="search_currency">搜索货币</string>
     <string name="select_tags">选择标记</string>
     <string name="select_theme">选择主题</string>
     <string name="settings">设置</string>
-    <string name="sign_out">退出</string>
-    <string name="sign_up_or_sign_in">注册或登录</string>
-    <string name="simple_budget_tracker">简单预算跟踪</string>
     <string name="summary_title">你花了</string>
     <string name="system_default">系统默认值</string>
     <string name="ok">好的</string>
@@ -78,14 +57,9 @@
     <string name="this_week">本周</string>
     <string name="title_hint">标题</string>
     <string name="today">今天</string>
-    <string name="translate_app">翻译应用程序</string>
-    <string name="translate_app_summary">让我们让每个人都能使用这个应用程序。</string>
-    <string name="translation_description">如果您有兴趣帮助将应用程序翻译为您的语言，请与我联系。我愿意尽可能多的支持！\n\n\当前支持：🇺🇸 🇦🇺 🇪🇸 🇵🇱</string>
-    <string name="welcome_to_expenses">欢迎使用Expenses</string>
     <string name="yes">是的</string>
 
     <!-- Shared Preferences -->
-    <string name="key_preferences" translatable="false">preferences</string>
     <string name="key_default_currency" translatable="false">default_currency</string>
     <string name="key_date_range" translatable="false">date_range</string>
     <string name="key_is_user_onboarded" translatable="false">is_user_onboarded</string>

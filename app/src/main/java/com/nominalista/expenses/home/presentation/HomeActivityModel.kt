@@ -7,28 +7,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.work.WorkInfo
 import com.nominalista.expenses.Application
 import com.nominalista.expenses.R
-import com.nominalista.expenses.configuration.Configuration
 import com.nominalista.expenses.settings.work.ExpenseExportWorker
 import com.nominalista.expenses.settings.work.ExpenseImportWorker
 import com.nominalista.expenses.util.reactive.DataEvent
 import com.nominalista.expenses.util.reactive.Event
-import com.nominalista.expenses.util.reactive.Variable
 import java.util.*
 
 class HomeActivityModel(
-        application: Application,
-        private val configuration: Configuration
+        application: Application
 ) : AndroidViewModel(application) {
-
-    val isBannerEnabled: Variable<Boolean> by lazy {
-        Variable(defaultValue = configuration.getBoolean(Configuration.KEY_BANNER_ENABLED))
-    }
-    val bannerTitle: Variable<String> by lazy {
-        Variable(defaultValue = configuration.getString(Configuration.KEY_BANNER_TITLE))
-    }
-    val bannerSubtitle: Variable<String> by lazy {
-        Variable(defaultValue = configuration.getString(Configuration.KEY_BANNER_SUBTITLE))
-    }
 
     val selectFileForImport = Event()
     val showExpenseImportFailureDialog = Event()
@@ -116,18 +103,12 @@ class HomeActivityModel(
         navigateToSupport.next()
     }
 
-    fun performBannerActionRequested() {
-        val bannerActionUrl = configuration.getString(Configuration.KEY_BANNER_ACTION_URL)
-        showActivity.next(Uri.parse(bannerActionUrl))
-    }
-
     @Suppress("UNCHECKED_CAST")
     class Factory(private val application: Application) : ViewModelProvider.NewInstanceFactory() {
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return HomeActivityModel(
-                    application,
-                    application.configuration
+                    application
             ) as T
         }
     }

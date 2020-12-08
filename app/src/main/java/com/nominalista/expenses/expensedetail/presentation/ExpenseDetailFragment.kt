@@ -11,10 +11,10 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.nominalista.expenses.R
+import com.nominalista.expenses.addeditexpense.presentation.AddEditExpenseActivity
 import com.nominalista.expenses.data.model.Tag
 import com.nominalista.expenses.util.extensions.application
 import com.nominalista.expenses.util.extensions.plusAssign
-import com.nominalista.expenses.addeditexpense.presentation.AddEditExpenseActivity
 import io.reactivex.disposables.CompositeDisposable
 
 class ExpenseDetailFragment : Fragment() {
@@ -33,9 +33,9 @@ class ExpenseDetailFragment : Fragment() {
     // Lifecycle start
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_expense_detail, container, false)
     }
@@ -79,14 +79,14 @@ class ExpenseDetailFragment : Fragment() {
         compositeDisposable += model.date.toObservable().subscribe { dateText.text = it }
         compositeDisposable += model.notes.toObservable().subscribe { notesText.text = it }
         compositeDisposable += model.tags
-            .toObservable()
-            .subscribe { configureChipGroup(it); configureNoTagsText(it.isEmpty()) }
+                .toObservable()
+                .subscribe { configureChipGroup(it); configureNoTagsText(it.isEmpty()) }
         compositeDisposable += model.showEdit
-            .toObservable()
-            .subscribe { AddEditExpenseActivity.start(requireContext(), it) }
+                .toObservable()
+                .subscribe { AddEditExpenseActivity.start(requireContext(), it) }
         compositeDisposable += model.finish
-            .toObservable()
-            .subscribe { requireActivity().onBackPressed() }
+                .toObservable()
+                .subscribe { requireActivity().onBackPressed() }
     }
 
     private fun configureChipGroup(tags: List<Tag>) {
@@ -151,10 +151,10 @@ class ExpenseDetailFragment : Fragment() {
 
     private fun deleteSelected(): Boolean {
         MaterialAlertDialogBuilder(requireContext())
-            .setMessage(R.string.delete_expense_message)
-            .setPositiveButton(R.string.yes) { _, _ -> model.delete() }
-            .setNegativeButton(R.string.no) { _, _ -> }
-            .show()
+                .setMessage(R.string.delete_expense_message)
+                .setPositiveButton(R.string.yes) { _, _ -> model.delete() }
+                .setNegativeButton(R.string.no) { _, _ -> }
+                .show()
         return true
     }
 }

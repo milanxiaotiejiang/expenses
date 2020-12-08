@@ -34,9 +34,9 @@ class HomeFragment : Fragment() {
     // Lifecycle start
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -81,18 +81,18 @@ class HomeFragment : Fragment() {
 
     private fun bindModel() {
         compositeDisposable += model.itemModels
-            .subscribe { adapter.submitList(it) }
+                .subscribe { adapter.submitList(it) }
         compositeDisposable += model.isLoading
-            .subscribe { configureProgressBar(it) }
+                .subscribe { configureProgressBar(it) }
 
         compositeDisposable += model.showExpenseDetail
-            .subscribe { showExpenseDetail(it) }
+                .subscribe { showExpenseDetail(it) }
         compositeDisposable += model.showTagFiltering
-            .subscribe { showTagFiltering() }
+                .subscribe { showTagFiltering() }
         compositeDisposable += model.showNoAddedTags
-            .subscribe { showNoAddedTags() }
+                .subscribe { showNoAddedTags() }
         compositeDisposable += model.showDeleteAllExpensesConfirmation
-            .subscribe { showDeleteAllExpensesConfirmation() }
+                .subscribe { showDeleteAllExpensesConfirmation() }
     }
 
     private fun configureProgressBar(isVisible: Boolean) {
@@ -111,19 +111,19 @@ class HomeFragment : Fragment() {
 
     private fun showNoAddedTags() {
         MaterialAlertDialogBuilder(requireActivity())
-            .setMessage(R.string.no_added_tags_message)
-            .setPositiveButton(R.string.ok) { _, _ -> }
-            .create()
-            .show()
+                .setMessage(R.string.no_added_tags_message)
+                .setPositiveButton(R.string.ok) { _, _ -> }
+                .create()
+                .show()
     }
 
     private fun showDeleteAllExpensesConfirmation() {
         MaterialAlertDialogBuilder(requireActivity())
-            .setMessage(R.string.delete_all_expenses_message)
-            .setPositiveButton(R.string.delete) { _, _ -> model.deleteAllExpensesConfirmed() }
-            .setNegativeButton(R.string.cancel) { _, _ -> }
-            .create()
-            .show()
+                .setMessage(R.string.delete_all_expenses_message)
+                .setPositiveButton(R.string.delete) { _, _ -> model.deleteAllExpensesConfirmed() }
+                .setNegativeButton(R.string.cancel) { _, _ -> }
+                .create()
+                .show()
     }
 
     // Lifecycle end

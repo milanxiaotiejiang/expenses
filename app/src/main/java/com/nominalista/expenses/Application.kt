@@ -1,10 +1,7 @@
 package com.nominalista.expenses
 
 import androidx.appcompat.app.AppCompatDelegate
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.nominalista.expenses.configuration.Configuration
-import com.nominalista.expenses.configuration.FirebaseConfiguration
 import com.nominalista.expenses.data.preference.PreferenceDataSource
 import com.nominalista.expenses.data.room.ApplicationDatabase
 import com.nominalista.expenses.data.room.RoomDataStore
@@ -31,23 +28,14 @@ class Application : android.app.Application() {
         PreferenceDataSource()
     }
 
-    val configuration: Configuration by lazy {
-        FirebaseConfiguration(FirebaseRemoteConfig.getInstance())
-    }
-
     override fun onCreate() {
         super.onCreate()
         initializeThreeTeen()
-        enqueueConfigurationSync()
         applyTheme()
     }
 
     private fun initializeThreeTeen() {
         AndroidThreeTen.init(this)
-    }
-
-    private fun enqueueConfigurationSync() {
-        configuration.enqueueSync()
     }
 
     private fun applyTheme() {

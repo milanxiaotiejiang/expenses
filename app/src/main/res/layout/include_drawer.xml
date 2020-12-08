@@ -159,50 +159,6 @@
 
         </LinearLayout>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/bannerLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_marginEnd="@dimen/spacing_normal"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            app:contentPaddingBottom="@dimen/spacing_large"
-            app:contentPaddingLeft="@dimen/spacing_large"
-            app:contentPaddingRight="@dimen/spacing_large"
-            app:contentPaddingTop="@dimen/spacing_large"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/bannerTitleTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:textAppearance="?attr/textAppearanceBody1"
-                    android:textColor="@color/color_on_surface_emphasis_high"
-                    tools:text="An awesome feature" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/bannerSubtitleTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="@color/color_on_surface_emphasis_medium"
-                    tools:text="Available soon" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </merge>

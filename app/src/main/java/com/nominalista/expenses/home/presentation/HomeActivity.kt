@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.core.view.GravityCompat
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.work.WorkManager
@@ -41,7 +40,6 @@ class HomeActivity : BaseActivity() {
         setupModel()
         setupToolbar()
         setupItemLayouts()
-        setupBannerLayout()
         bindModel()
     }
 
@@ -70,24 +68,12 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-    private fun setupBannerLayout() {
-        bannerLayout.setOnClickListener {
-            runAfterDrawerClose { model.performBannerActionRequested() }
-        }
-    }
-
     private fun runAfterDrawerClose(block: () -> Unit) {
         drawerLayout.closeDrawer(GravityCompat.START)
         runOnUiThread(DRAWER_CLOSE_DELAY) { block() }
     }
 
     private fun bindModel() {
-        compositeDisposable += model.isBannerEnabled
-            .subscribe { configureBannerLayout(it) }
-        compositeDisposable += model.bannerTitle
-            .subscribe { configureBannerTitle(it) }
-        compositeDisposable += model.bannerSubtitle
-            .subscribe { configureBannerSubtitle(it) }
 
         compositeDisposable += model.selectFileForImport
             .subscribe { selectFileForImport() }
@@ -108,18 +94,6 @@ class HomeActivity : BaseActivity() {
             .subscribe { showActivity(it) }
         compositeDisposable += model.observeWorkInfo
             .subscribe { observeWorkInfo(it) }
-    }
-
-    private fun configureBannerLayout(isBannerEnabled: Boolean) {
-        bannerLayout.isVisible = isBannerEnabled
-    }
-
-    private fun configureBannerTitle(bannerTitle: String) {
-        bannerTitleTextView.text = bannerTitle
-    }
-
-    private fun configureBannerSubtitle(bannerSubtitle: String) {
-        bannerSubtitleTextView.text = bannerSubtitle
     }
 
     private fun selectFileForImport() {

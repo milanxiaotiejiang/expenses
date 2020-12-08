@@ -6,6 +6,6 @@
     <fragment
         android:id="@+id/fragment_settings"
         android:name="com.nominalista.expenses.settings.presentation.SettingsFragment"
-        android:label="SettingsFragment"/>
+        android:label="SettingsFragment" />
 
 </navigation>

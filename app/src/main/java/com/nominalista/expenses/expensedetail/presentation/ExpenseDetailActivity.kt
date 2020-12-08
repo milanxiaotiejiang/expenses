@@ -7,11 +7,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import com.nominalista.expenses.R
-import com.nominalista.expenses.data.model.Expense
 import com.nominalista.expenses.common.presentation.BaseActivity
+import com.nominalista.expenses.data.model.Expense
 import kotlinx.android.synthetic.main.activity_expense_detail.*
 
-class ExpenseDetailActivity: BaseActivity() {
+class ExpenseDetailActivity : BaseActivity() {
 
     override var animationKind = ANIMATION_SLIDE_FROM_RIGHT
 
